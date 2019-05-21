@@ -20,7 +20,7 @@ namespace IntermediateRouting.Logic
                 using (var context = _dataAccessProvider)
                 {
                     Routing result = context.Providers
-                        .Where(x => reference.Contains(x.Identifier) && x.Action.Equals(operation))
+                        .Where(x => reference.Substring(0, 4).Equals(x.Identifier) && x.Provider.Equals(operation))
                         .Select(x => new Routing()
                         {
                             Action = x.Action,
